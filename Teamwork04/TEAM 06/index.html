@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+        <h3>TEAMWORK 04 / JavaScript / TEAM 06</h3>
+	</head>
+
+    <body>
+        <p>
+        1. TYPE VALUE IN INPUT BOX: <input id = 'box1'>
+            <button onclick=func1()>ALERT VALUE FROM BOX</button>
+        </p>
+        <br>
+        <p>
+            
+        2. <button onclick=func2()>GET VALUE</button>
+        <span id='span2'>DISPLAY IN span's innerHTML HERE</span>
+        
+        </p>
+        <br>
+        <p>
+        
+        3. TYPE NUMBER IN INPUT BOX: <input id = 'box3'>
+            <button onclick=func3()>ALERT 10% OF VALUE FROM BOX</button>
+            
+            </p>
+            <br>
+            <p>
+        
+        4. TYPE NUMBER IN INPUT BOX:<input id = 'box4'>
+            <button onclick='func4()'>ALERT SUM OF ALL INTEGERS FROM ZERO TO BOX VALUE</button>
+            
+            </p>
+            <br>
+            <p>
+            
+        5. TYPE COLOR NAME IN INPUT BOX:<input id = 'box5'>
+        <button onclick=func5()>CHANGE COLOR OF TEXT TO RIGHT</button>
+        <span id='span5'>CHANGE COLOR OF THIS TEXT</span>
+        
+        </p>
+        <br>
+        <p>
+        
+        6. SELECT COLOR <select onchange='func6(this.value)'>
+            <option value ='black'>BLACK</option>
+            <option value ='red'>RED</option>
+            <option value ='green'>GREEN</option>
+            <option value ='blue'>BLUE</option>
+            <option value ='purple'>PURPLE</option>
+            <option value ='white'>WHITE</option>
+        </select>
+        <span id='span6'>CHANGE COLOR OF THIS TEXT</span>
+
+        </p>
+        <br>
+        <p>
+        
+        7. TYPE NUMBER IN INPUT BOX:<input id = 'box7'>
+            <button onclick=func7()>IF BOX VALUE > 100 ALERT YES OTHERWISE ALERT NO</button>
+
+        </p>
+        
+        <script>
+            function func1(){
+                val1 = document.getElementById('box1').value;
+                alert(val1)
+            };
+            function func2() {
+                val2 = prompt('Type a value');
+                document.getElementById('span2').innerHTML = "DISPLAY IN span's innerHTML HERE "+val2;
+            };
+            function func3(){
+                val3 = document.getElementById('box3').value;
+                alert(0.1*parseFloat(val3));
+            };
+            function func4(){
+                val4 = Number(parseInt(document.getElementById('box4').value));
+                total = 0;
+                for(i=0; i<=val4; i++){
+                    total += i;
+                }
+                alert(total);
+            };
+            function func5() {
+                val5 = document.getElementById('box5').value;
+                document.getElementById('span5').style.color = val5;
+            };
+            function func6(val6) {
+                document.getElementById('span6').style.color = val6;
+            };
+            function func7(){
+                val7 = Number(parseFloat(document.getElementById('box7').value));
+                if (val7 > 100) {alert('YES');}
+                else {alert('NO');}
+                
+            };
+        </script>
+       
+            
+
+</body>
+</html>
+

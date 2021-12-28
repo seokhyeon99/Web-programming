@@ -1,0 +1,13 @@
+{
+  "theCrew" : {
+    "Conor Campbell" : {
+      "imageUrl" : "images/Conor.jpg"
+    },
+    "Seokhyeon Lee" : {
+      "imageUrl" : "images/seokhyeon.jpeg"
+    },
+    "William Harris" : {
+      "imageUrl" : "images/bill_harris.jpeg"
+    }
+  }
+}

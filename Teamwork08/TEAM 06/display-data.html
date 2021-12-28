@@ -1,0 +1,139 @@
+<html>
+
+  <head>
+
+      <script src="https://www.gstatic.com/firebasejs/7.5.1/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.5.1/firebase-database.js"></script>
+
+      <script>
+
+        // Your web app's Firebase configuration
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyD8J_IItlmzev23T4TnRGFV5Z-wwUjWaXs",
+            authDomain: "teamwork08-fa67a.firebaseapp.com",
+            databaseURL: "https://teamwork08-fa67a-default-rtdb.firebaseio.com",
+            projectId: "teamwork08-fa67a",
+            storageBucket: "teamwork08-fa67a.appspot.com",
+            messagingSenderId: "531427175724",
+            appId: "1:531427175724:web:53b213b63ff76b28acd089",
+            measurementId: "G-QV0MD7CCJZ"    };
+
+        // Initialize Firebase
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+      </script>
+
+      <!-- KEEP THESE <script> sections separate. -->
+
+      <script>
+
+
+        /*
+
+          READ THIS VERY IMPORTANT MESSAGE!
+
+          THIS EXAMPLE ASSUMES A LIST OF friends
+
+          EACH friend HAS ONE friendImage
+
+          THE DATABASE COULD LOOK LIKE THIS
+
+            {
+              "friends" : {
+                "bill" : {
+                  "friendImage" : "bill.jpg"
+                },
+                "Inez" : {
+                  "friendImage" : "inez.jpg"
+                }
+              }
+            }
+
+          */
+
+
+
+        // MAKE THE PATH TO ALL friends
+
+        path = '/members/';
+
+        //alert(path);
+
+
+        // GET "snapshot" OF ALL friends RECORDS
+
+        firebase.database().ref(path).once('value', function(snapshot) {
+
+
+          // SEE IF THERE ARE NO friends RECORDS - IF NONE DISPLAY A STATUS MESSAGE
+
+          var myJSON = JSON.stringify(snapshot);
+
+          if (myJSON == 'null') {
+
+              alert('Database empty');
+
+              history.go(-1);
+
+          };
+
+
+          // BY GETTING HERE THERE ARE AT LEAST 1 friends RECORDS
+          
+          count = 0;
+
+
+          // CREATE A VARIABLE TO HOLD THE DISPLAY OF ALL friends RECORDS
+
+          content = '';
+
+          snapshot.forEach(function(childSnapshot) {
+
+
+            // FOR EACH friend GET THE friend's NAME IN THE VARIABLE friend
+
+            var key = childSnapshot.key;
+
+            friend = key;
+
+
+            // GET THE friend's DATA - IN THIS CASE EACH FRIEND HAS A friendImage
+
+            var obj = childSnapshot.val();
+
+            imageUrl = obj.imageUrl;
+
+
+            // ADD THIS friend AND friendImage TO THE DISPLAY
+
+            count++;
+
+            content += '<h3>#' + count + ' ' + friend + '</h3>' + '<br>' + '<img src=images/' + imageUrl + ' height=200>' + '<br><br>';
+
+
+          });
+
+
+          // DISPLAY THE RESULT
+
+          document.getElementById('result').innerHTML = content;
+
+        });
+
+
+
+      </script>
+
+  </head>
+
+  <body>
+
+      <div id='result'></div>
+
+  </body>
+
+ </html>

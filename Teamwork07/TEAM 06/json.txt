@@ -1,0 +1,23 @@
+url = "catalog.php";
+
+url += '?cat='+$("#cat").val();
+
+url += '&max='+$("#max").val();
+
+$.get({url: url, success: function(result) {
+
+	var JSONdata = JSON.parse(result);
+
+	report = '<h1>' + JSONdata.title + '</h1>';
+
+	for (i = 0; i < JSONdata.products.length; i++) {
+
+		report += '<h3>' + JSONdata.products[i].cat + ' / ' + JSONdata.products[i].product + ' / $' + JSONdata.products[i].price + '</h3>'
+
+		report += '<img src="' + JSONdata.products[i].imageSrc + '" height=100">';
+
+	};
+
+	document.getElementById('output').innerHTML = report;
+
+}});
